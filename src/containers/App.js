@@ -20,6 +20,7 @@ class App extends Component {
     }
 
     deleteUserHendler = (userIndex) => {
+        //TODO: This is very ineffecient. Try to manage the user list in a way that does not require you to rebuild the entire array every time. Something like {user_id: userInstance}. find another value in the state that should trigger the update flow
         const users = [...this.state.users];
         users.splice(userIndex, 1);
         this.setState({ users: users });
@@ -39,6 +40,7 @@ class App extends Component {
     
         user.email = event.target.value;
     
+        // TODO: Same here. 
         const users = [...this.state.users];
         users[userIndex] = user;
     
@@ -49,6 +51,7 @@ class App extends Component {
         fetch('https://randomuser.me/api/?results=50')
             .then(res => res.json())
             .then(users => this.setState({ users: users.results }));
+            //TODO: What about error handling?
     }
 
     render() {

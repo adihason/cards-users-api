@@ -17,7 +17,9 @@ class CardList extends Component{
                                 name={`${user.name['first']} ${user.name['last']}`}
                                 gender={user.gender}
                                 email={user.email}
-                                click={this.props.clicked.bind(this, index)}
+                                // TODO: You could have bound the function only once in the creation of the instance, instead of each time when doing render.
+                                click={this.props.clicked.bind(this, index)} 
+                                
                                 change={(event) => this.props.changed(event, user.login['uuid'])} />
                         );
                     })
